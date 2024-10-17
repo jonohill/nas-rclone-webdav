@@ -1,0 +1,10 @@
+http:// {
+	log {
+		level ERROR
+	}
+
+	basicauth {
+		import /config/users_rw.txt
+	}
+	reverse_proxy unix//var/run/rclone.sock
+}

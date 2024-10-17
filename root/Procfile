@@ -1,0 +1,3 @@
+caddy: caddy run --config /etc/caddy/Caddyfile
+rclone: /rclone.sh
+cloudflared: cloudflared tunnel run --token "${CF_TUNNEL_TOKEN}"
