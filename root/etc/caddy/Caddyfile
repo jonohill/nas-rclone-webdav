@@ -12,6 +12,7 @@ http:// {
 		from_cookies CF_Authorization
 		issuer_whitelist {$JWT_ISS}
 		jwk_url {$JWK_URL}
+		user_claims []string{"sub", "common_name"}
 	}
 
 	reverse_proxy unix//var/run/rclone.sock
