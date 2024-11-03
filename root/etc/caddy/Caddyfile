@@ -1,10 +1,17 @@
+{
+	order jwtauth before basicauth
+}
+
 http:// {
 	log {
 		level ERROR
 	}
 
-	basicauth {
-		import /config/users_rw.txt
+	jwtauth {
+		from_header Cf-Access-Jwt-Assertion
+		issuer_whitelist {$JWT_ISS}
+		jwk_url {$JWK_URL}
 	}
+
 	reverse_proxy unix//var/run/rclone.sock
 }

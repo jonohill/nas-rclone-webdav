@@ -1,3 +1,9 @@
+FROM golang:1.23.1-alpine AS go_build
+
+RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
+    xcaddy build \
+        --with github.com/ggicci/caddy-jwt
+
 FROM curlimages/curl AS download
 
 ARG TARGETPLATFORM
@@ -24,10 +30,10 @@ FROM alpine:3.20.3
 
 RUN apk add --no-cache \
         bash \
-        caddy \
         rclone \
         tmux
 
+COPY --from=go_build /go/caddy /usr/local/bin/caddy
 COPY --from=download /tmp/overmind /usr/local/bin/overmind
 COPY --from=download /tmp/cloudflared /usr/local/bin/cloudflared
 
