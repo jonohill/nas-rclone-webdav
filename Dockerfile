@@ -1,4 +1,4 @@
-FROM golang:1.25.5-alpine AS go_build
+FROM golang:1.25.6-alpine AS go_build
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
     xcaddy build \
