@@ -19,7 +19,7 @@ RUN ARCH="${TARGETPLATFORM#*/}"; \
     chmod +x /tmp/overmind
 
 # renovate: datasource=github-releases depName=cloudflare/cloudflared
-ARG CLOUDFLARED_VERSION=2026.1.2
+ARG CLOUDFLARED_VERSION=2026.2.0
 RUN ARCH="${TARGETPLATFORM#*/}"; \
     curl --fail -L -o /tmp/cloudflared \
         "https://github.com/cloudflare/cloudflared/releases/download/${CLOUDFLARED_VERSION}/cloudflared-linux-${ARCH}" && \
